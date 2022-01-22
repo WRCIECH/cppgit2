@@ -4,15 +4,8 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.8)
 SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
-# Add libgit2
-find_package(PkgConfig)
-if(PkgConfig_FOUND)
-  PKG_CHECK_MODULES(LIBGIT2 libgit2>=0.99)
-endif()
-if(NOT LIBGIT2_FOUND)
-  ADD_SUBDIRECTORY(ext/libgit2 ${CMAKE_BINARY_DIR}/lib)
-  set(LIBGIT2_INCLUDEDIR ext/libgit2/include)
-endif()
+ADD_SUBDIRECTORY(ext/libgit2 ${CMAKE_BINARY_DIR}/lib)
+set(LIBGIT2_INCLUDEDIR ext/libgit2/include)
 
 INCLUDE(CMakePackageConfigHelpers)
 
